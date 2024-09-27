@@ -25,3 +25,8 @@ body {
     text-wrap: balance;
   }
 }
+
+img{
+  border-radius: 8px;
+  /* box-shadow: 1px 1px 2 #ededed; */
+}
