@@ -3,13 +3,6 @@ import Car360View from './Car360View';
 import Slider from './Slider';
 import Searchbar from '@/app/components/Searchbar';
 
-export async function generateStaticParams() {
-  const res = await fetch('https://motorindia.in/wp-json/api/cars');
-  const data = await res.json();
-  const slugs = data.posts.map(post => ({ slug: post.slug }));
-
-  return slugs;
-}
 
 const CarPage = async ({ params }) => {
   const { slug } = params;
@@ -20,6 +13,7 @@ const CarPage = async ({ params }) => {
   const exteriorImages = Object.values(car.images.exterior).slice(0, 6);
   const interiorImages = Object.values(car.images.interior).slice(0, 6);
 
+
   const images = [
     car.image_url,
     ...exteriorImages.map(img => img.url),
@@ -28,9 +22,12 @@ const CarPage = async ({ params }) => {
 
   return (
     <>
-      <Searchbar />
+    <Searchbar/>
       <div className="container mx-auto p-4">
-        <Slider images={images} />
+      
+      <Slider images={images}/>
+
+
         <h1 className="text-3xl font-bold mb-4">{car.title}</h1>
         <div className="mb-4">
           <p><strong>Brand:</strong> {car.brand_name}</p>
