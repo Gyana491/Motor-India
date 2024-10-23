@@ -62,7 +62,7 @@ const CarPage = async ({ params }) => {
             </div>
           ))}
         </div>
-        <h2 className="text-2xl font-semibold mb-2">360 View</h2>
+        
         <Car360View car={car} />
       </div>
     </>
