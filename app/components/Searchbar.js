@@ -19,11 +19,11 @@ const SearchBar = () => {
 
   const handleSearch = async () => {
     setIsSearching(true);
-    const url = `https://motorindia.in/wp-json/api/cars?s=${encodeURIComponent(searchTerm)}`;
+    const url = `https://motorindia.in/index.php/wp-json/wp/v2/car?s=${encodeURIComponent(searchTerm)}`;
     try {
       const res = await fetch(url);
       const result = await res.json();
-      setFilteredData(result.posts);
+      setFilteredData(result);
     } catch (error) {
       console.error('Error fetching search results:', error);
     } finally {
@@ -54,7 +54,7 @@ const SearchBar = () => {
         <div>
           {/* Render your filtered data here */}
           {filteredData.map((item) => (
-            <div key={item.id}><Link href={`/car/${item.slug}`}>{item.title}</Link></div>
+            <div key={item.id}><Link href={`/car/${item.slug}`}>{item.title.rendered}</Link></div>
           ))}
         </div>
       )}
